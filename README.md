@@ -13,7 +13,7 @@ The cat is a domestic species of small carnivorous mammal. It is the only domest
 - Mass: 3.6 – 4.5 kg (Adult)
 
 
-This app will also demonstrate how an experienced flutter developer handles apis and data coming from a server. 
+This app will also demonstrate how an experienced flutter developer like myself handles apis and data coming from a server. 
 Check it out, you may learn a thing or two.
 
 ### About this application
