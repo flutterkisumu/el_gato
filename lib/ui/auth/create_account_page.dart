@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:el_gato/providers/obscure_password/obscure_password_provider.dart';
-import 'package:el_gato/router/router.gr.dart';
 import 'package:el_gato/ui/widgets/footer_text_widget.dart';
 import 'package:el_gato/ui/widgets/password_suffix_widget.dart';
 import 'package:el_gato/ui/widgets/primary_button_widget.dart';
@@ -14,13 +13,13 @@ import 'package:lottie/lottie.dart';
 
 /// This is the login page where
 /// users will be able to log in
-class LoginPage extends ConsumerWidget {
+class CreateAccountPage extends ConsumerWidget {
   /// The constructor
-  LoginPage({Key? key}) : super(key: key);
+  CreateAccountPage({Key? key}) : super(key: key);
 
   /// This holds the state for the login page password obscure state
   static StateNotifierProvider<ObscurePasswordProvider, bool>
-      obscureLoginPasswordProvider =
+      obscureCreateAccountPasswordProvider =
       StateNotifierProvider<ObscurePasswordProvider, bool>(
     (_) => ObscurePasswordProvider(),
   );
@@ -35,12 +34,32 @@ class LoginPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: [
-              const SizedBox(
-                height: 200,
-              ),
               LottieBuilder.asset(
-                'assets/lottie/cat_wiggle.json',
-                height: 300,
+                'assets/lottie/cat_chill.json',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              AppTextInput(
+                name: 'name',
+                validators: [
+                  FormBuilderValidators.required(),
+                  FormBuilderValidators.email(),
+                ],
+                label: const Text('Name'),
+                hint: 'Enter your name here',
+              ),
+              AppTextInput(
+                name: 'username',
+                validators: [
+                  FormBuilderValidators.required(),
+                  FormBuilderValidators.email(),
+                ],
+                label: const Text('Username'),
+                hint: 'Enter your preferred username here',
+              ),
+              const SizedBox(
+                height: 10,
               ),
               AppTextInput(
                 name: 'email',
@@ -48,7 +67,7 @@ class LoginPage extends ConsumerWidget {
                   FormBuilderValidators.required(),
                   FormBuilderValidators.email(),
                 ],
-                label: const Text('Enter your email'),
+                label: const Text('Email'),
                 hint: 'Enter your email here',
               ),
               const SizedBox(
@@ -56,33 +75,33 @@ class LoginPage extends ConsumerWidget {
               ),
               AppTextInput(
                 name: 'password',
-                obscureText: ref.watch(obscureLoginPasswordProvider),
-                label: const Text('Enter your password'),
+                obscureText: ref.watch(obscureCreateAccountPasswordProvider),
+                label: const Text('Password'),
                 validators: [
                   FormBuilderValidators.required(),
                   FormBuilderValidators.minLength(6)
                 ],
                 suffix: PasswordSuffixWidget(
-                  obscureProvider: obscureLoginPasswordProvider,
+                  obscureProvider: obscureCreateAccountPasswordProvider,
                 ),
                 hint: 'Enter your password here',
               ),
               const SizedBox(
                 height: 20,
               ),
-              PrimaryButtonWidget(label: 'Login', onPressed: () {}),
+              PrimaryButtonWidget(label: 'Create Account', onPressed: () {}),
               const SizedBox(
                 height: 10,
               ),
               Text.rich(
                 TextSpan(
-                  text: "Dont't have an account? ",
+                  text: 'Already have an account? ',
                   children: [
                     TextSpan(
-                      text: 'Create One',
+                      text: 'Login',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          AutoRouter.of(context).push(CreateAccountRoute());
+                          AutoRouter.of(context).pop();
                         },
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.primary,
