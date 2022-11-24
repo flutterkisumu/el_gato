@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:el_gato/providers/obscure_password/obscure_password_provider.dart';
+import 'package:el_gato/router/router.gr.dart';
 import 'package:el_gato/ui/widgets/footer_text_widget.dart';
 import 'package:el_gato/ui/widgets/password_suffix_widget.dart';
 import 'package:el_gato/ui/widgets/primary_button_widget.dart';
@@ -89,7 +90,11 @@ class CreateAccountPage extends ConsumerWidget {
               const SizedBox(
                 height: 20,
               ),
-              PrimaryButtonWidget(label: 'Create Account', onPressed: () {}),
+              PrimaryButtonWidget(
+                  label: 'Create Account',
+                  onPressed: () {
+                    AutoRouter.of(context).push(const MainHomeRoute());
+                  }),
               const SizedBox(
                 height: 10,
               ),
