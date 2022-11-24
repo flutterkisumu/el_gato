@@ -20,8 +20,8 @@ class PrimaryButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton(
       color: Theme.of(context).colorScheme.primary,
+      onPressed: onPressed,
       child: Text(label),
-      onPressed: () => onPressed,
     );
   }
 }
