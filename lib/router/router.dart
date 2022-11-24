@@ -2,6 +2,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:el_gato/ui/auth/create_account_page.dart';
 import 'package:el_gato/ui/auth/login_page.dart';
+import 'package:el_gato/ui/main_home/main_home_page.dart';
 import 'package:el_gato/ui/splash/splash_page.dart';
 
 @MaterialAutoRouter(
@@ -13,6 +14,9 @@ import 'package:el_gato/ui/splash/splash_page.dart';
     ),
     AutoRoute(
       page: CreateAccountPage,
+    ),
+    AutoRoute(
+      page: MainHomePage,
     ),
   ],
 )

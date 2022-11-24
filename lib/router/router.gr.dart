@@ -11,21 +11,22 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 
 import '../ui/auth/create_account_page.dart' as _i3;
 import '../ui/auth/login_page.dart' as _i2;
+import '../ui/main_home/main_home_page.dart' as _i4;
 import '../ui/splash/splash_page.dart' as _i1;
 
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
+class AppRouter extends _i5.RootStackRouter {
+  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i5.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
       );
@@ -33,7 +34,7 @@ class AppRouter extends _i4.RootStackRouter {
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>(
           orElse: () => const LoginRouteArgs());
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i2.LoginPage(key: args.key),
       );
@@ -41,33 +42,43 @@ class AppRouter extends _i4.RootStackRouter {
     CreateAccountRoute.name: (routeData) {
       final args = routeData.argsAs<CreateAccountRouteArgs>(
           orElse: () => const CreateAccountRouteArgs());
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i3.CreateAccountPage(key: args.key),
+      );
+    },
+    MainHomeRoute.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i4.MainHomePage(),
       );
     },
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(
+  List<_i5.RouteConfig> get routes => [
+        _i5.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i4.RouteConfig(
+        _i5.RouteConfig(
           LoginRoute.name,
           path: '/login-page',
         ),
-        _i4.RouteConfig(
+        _i5.RouteConfig(
           CreateAccountRoute.name,
           path: '/create-account-page',
+        ),
+        _i5.RouteConfig(
+          MainHomeRoute.name,
+          path: '/main-home-page',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i4.PageRouteInfo<void> {
+class SplashRoute extends _i5.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -79,8 +90,8 @@ class SplashRoute extends _i4.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginPage]
-class LoginRoute extends _i4.PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({_i5.Key? key})
+class LoginRoute extends _i5.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i6.Key? key})
       : super(
           LoginRoute.name,
           path: '/login-page',
@@ -93,7 +104,7 @@ class LoginRoute extends _i4.PageRouteInfo<LoginRouteArgs> {
 class LoginRouteArgs {
   const LoginRouteArgs({this.key});
 
-  final _i5.Key? key;
+  final _i6.Key? key;
 
   @override
   String toString() {
@@ -103,8 +114,8 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [_i3.CreateAccountPage]
-class CreateAccountRoute extends _i4.PageRouteInfo<CreateAccountRouteArgs> {
-  CreateAccountRoute({_i5.Key? key})
+class CreateAccountRoute extends _i5.PageRouteInfo<CreateAccountRouteArgs> {
+  CreateAccountRoute({_i6.Key? key})
       : super(
           CreateAccountRoute.name,
           path: '/create-account-page',
@@ -117,10 +128,22 @@ class CreateAccountRoute extends _i4.PageRouteInfo<CreateAccountRouteArgs> {
 class CreateAccountRouteArgs {
   const CreateAccountRouteArgs({this.key});
 
-  final _i5.Key? key;
+  final _i6.Key? key;
 
   @override
   String toString() {
     return 'CreateAccountRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [_i4.MainHomePage]
+class MainHomeRoute extends _i5.PageRouteInfo<void> {
+  const MainHomeRoute()
+      : super(
+          MainHomeRoute.name,
+          path: '/main-home-page',
+        );
+
+  static const String name = 'MainHomeRoute';
 }
