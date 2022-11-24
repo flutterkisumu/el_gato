@@ -3,10 +3,10 @@ import 'package:el_gato/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+/// This page first appears on app launch
 class SplashPage extends StatefulWidget {
+  /// The constructor
   const SplashPage({Key? key}) : super(key: key);
-  final String sam = '';
-
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
@@ -18,8 +18,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
-    Future.delayed(Duration(seconds: 4),
-        (() => AutoRouter.of(context).replace(LoginRoute())));
+    Future.delayed(
+      const Duration(seconds: 4),
+      () => AutoRouter.of(context).replace(LoginRoute()),
+    );
   }
 
   @override
@@ -41,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
             ..duration = composition.duration
             ..forward();
         },
-      )),
+      ),),
     );
   }
 }

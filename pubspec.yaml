@@ -26,8 +26,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_form_builder: ^7.7.0
+  flutter_localization: 
   flutter_riverpod: ^2.1.1
+  form_builder_validators: ^8.4.0
   freezed_annotation: ^2.2.0
+  intl: ^0.17.0
   json_serializable: ^6.5.4
   lottie: ^2.0.0
 
@@ -37,6 +40,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.2.1
+  very_good_analysis: ^3.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs
 import 'package:auto_route/auto_route.dart';
 import 'package:el_gato/ui/auth/login_page.dart';
 import 'package:el_gato/ui/splash/splash_page.dart';
