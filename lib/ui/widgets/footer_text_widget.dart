@@ -8,7 +8,7 @@ class FooterTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'EL-Gato, Vercetti Inc., 2022',
+      'EL-Gato, Vercetti Inc. 2022',
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.caption,
     );

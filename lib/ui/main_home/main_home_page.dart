@@ -25,6 +25,7 @@ class MainHomePage extends ConsumerWidget {
     ];
     return Scaffold(
       bottomNavigationBar: CupertinoTabBar(
+        activeColor: Theme.of(context).colorScheme.secondary,
         currentIndex: ref.watch(mainBottomNavProvider),
         onTap: (val) {
           ref.read(mainBottomNavProvider.notifier).setvalue(val);

@@ -31,68 +31,78 @@ class LoginPage extends ConsumerWidget {
     return Scaffold(
       body: FormBuilder(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 200,
-              ),
-              LottieBuilder.asset(
-                'assets/lottie/cat_wiggle.json',
-                height: 300,
-              ),
-              AppTextInput(
-                name: 'email',
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.email(),
-                ],
-                label: const Text('Enter your email'),
-                hint: 'Enter your email here',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              AppTextInput(
-                name: 'password',
-                obscureText: ref.watch(obscureLoginPasswordProvider),
-                label: const Text('Enter your password'),
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.minLength(6)
-                ],
-                suffix: PasswordSuffixWidget(
-                  obscureProvider: obscureLoginPasswordProvider,
-                ),
-                hint: 'Enter your password here',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              PrimaryButtonWidget(label: 'Login', onPressed: () {}),
-              const SizedBox(
-                height: 10,
-              ),
-              Text.rich(
-                TextSpan(
-                  text: "Dont't have an account? ",
-                  children: [
-                    TextSpan(
-                      text: 'Create One',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          AutoRouter.of(context).push(CreateAccountRoute());
-                        },
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 10,
+            ),
+            LottieBuilder.asset(
+              'assets/lottie/cat_wiggle.json',
+              height: 300,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      AppTextInput(
+                        name: 'email',
+                        validators: [
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.email(),
+                        ],
+                        label: const Text('Enter your email'),
+                        hint: 'Enter your email here',
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      AppTextInput(
+                        name: 'password',
+                        obscureText: ref.watch(obscureLoginPasswordProvider),
+                        label: const Text('Enter your password'),
+                        validators: [
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.minLength(6)
+                        ],
+                        suffix: PasswordSuffixWidget(
+                          obscureProvider: obscureLoginPasswordProvider,
+                        ),
+                        hint: 'Enter your password here',
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 10,
+                      ),
+                      PrimaryButtonWidget(label: 'Login', onPressed: () {}),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text.rich(
+                        TextSpan(
+                          text: "Dont't have an account? ",
+                          children: [
+                            TextSpan(
+                              text: 'Create One',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  AutoRouter.of(context)
+                                      .push(CreateAccountRoute());
+                                },
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: const FooterTextWidget(),
