@@ -37,10 +37,29 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.2
+  flutter_launcher_icons: ^0.11.0
   flutter_test:
     sdk: flutter
   freezed: ^2.2.1
   very_good_analysis: ^3.1.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/cat_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon/cat_icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icon/cat_icon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icon/cat_icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
