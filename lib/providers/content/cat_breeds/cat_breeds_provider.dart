@@ -13,7 +13,7 @@ final catBreedsProvider =
         (ref) {
   /// Expose the repository
   final repository = ref.watch(catBreedsRepositoryProvider);
-  return CatBreedsProvider(repository);
+  return CatBreedsProvider(repository)..fetchBreeds();
 });
 
 /// The cat breeds provider to handle the cat bred states

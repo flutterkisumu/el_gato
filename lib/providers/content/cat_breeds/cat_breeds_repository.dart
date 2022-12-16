@@ -6,7 +6,7 @@ class CatBreedsRepository {
   /// Get the list of cat breeds
   Future<List<CatBreed>> getBreeds() async {
     final response =
-        await ApiService<List<Map<String, dynamic>>>().getData('breeds');
+        await ApiService<List<Map<String, dynamic>>>().getData('/breeds');
     return response!.map((e) => CatBreed.fromJson(e)).toList();
   }
 }
