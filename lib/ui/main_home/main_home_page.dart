@@ -28,7 +28,7 @@ class MainHomePage extends ConsumerWidget {
         activeColor: Theme.of(context).colorScheme.secondary,
         currentIndex: ref.watch(mainBottomNavProvider),
         onTap: (val) {
-          ref.read(mainBottomNavProvider.notifier).setvalue(val);
+          ref.read(mainBottomNavProvider.notifier).state = val;
         },
         items: items
             .map(
