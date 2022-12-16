@@ -4,7 +4,7 @@ part 'api_fetch_state.freezed.dart';
 
 /// The api fetch state
 @freezed
-class ApiFetchState<T> with _$ApiFetchState<T> {
+class ApiFetchState<T> with _$ApiFetchState {
   /// This is the initial state when the app is first loaded
   factory ApiFetchState.initial() = _Initial;
 
