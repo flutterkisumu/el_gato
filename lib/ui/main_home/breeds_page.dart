@@ -1,12 +1,13 @@
 import 'package:el_gato/models/cat_breed/cat_breed.dart';
 import 'package:el_gato/providers/content/cat_breeds/cat_breeds_provider.dart';
 import 'package:el_gato/style/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-///
+/// The breeds page to show all the breeds
 class BreedsPage extends ConsumerWidget {
-  ///
+  /// Constructor call
   const BreedsPage({super.key});
 
   @override
@@ -41,15 +42,46 @@ class BreedsListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView(
-      children: breeds
-          .map(
-            (e) => ListTile(
-              title: Text(e.name),
-              subtitle: Text(e.description),
+    return CustomScrollView(
+      slivers: [
+        CupertinoSliverRefreshControl(
+          onRefresh: () {
+            return ref
+                .read(catBreedsProvider.notifier)
+                .fetchBreeds(refresh: true);
+          },
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) => BreedTileWidget(
+              breed: breeds[index],
             ),
-          )
-          .toList(),
+            childCount: breeds.length,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// The breed tile widget to show a single breed
+class BreedTileWidget extends ConsumerWidget {
+  /// Constructor call
+  const BreedTileWidget({super.key, required this.breed});
+
+  /// The breed to show
+  final CatBreed breed;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      onTap: () {},
+      title: Text(breed.name),
+      subtitle: Text(
+        breed.description,
+        maxLines: 3,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }
