@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'BSD' }
   s.author           = { 'Flutter Dev Team' => 'flutter-dev@googlegroups.com' }
   s.source           = { :git => 'https://github.com/flutter/engine', :tag => s.version.to_s }
-  s.osx.deployment_target = '10.11'
+  s.osx.deployment_target = '10.14'
   # Framework linking is handled by Flutter tooling, not CocoaPods.
   # Add a placeholder to satisfy `s.dependency 'FlutterMacOS'` plugin podspecs.
   s.vendored_frameworks = 'path/to/nothing'
