@@ -1,6 +1,7 @@
 // ignore_for_file: use_colored_box
 
 import 'package:el_gato/providers/bottom_nav/bottom_nav_provider.dart';
+import 'package:el_gato/ui/main_home/feed/feed_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +32,7 @@ class MainHomePage extends ConsumerWidget {
     Container(
       color: Colors.red,
     ),
-    BreedsPage(),
+    FeedPage(),
     Container(
       color: Colors.green,
     ),
