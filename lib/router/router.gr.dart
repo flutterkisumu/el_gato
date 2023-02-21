@@ -61,7 +61,7 @@ class AppRouter extends _i5.RootStackRouter {
   List<_i5.RouteConfig> get routes => [
         _i5.RouteConfig(
           SplashRoute.name,
-          path: '/',
+          path: '/splash-page',
         ),
         _i5.RouteConfig(
           LoginRoute.name,
@@ -73,7 +73,7 @@ class AppRouter extends _i5.RootStackRouter {
         ),
         _i5.RouteConfig(
           MainHomeRoute.name,
-          path: '/main-home-page',
+          path: '/',
         ),
       ];
 }
@@ -84,7 +84,7 @@ class SplashRoute extends _i5.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
-          path: '/',
+          path: '/splash-page',
         );
 
   static const String name = 'SplashRoute';
@@ -144,7 +144,7 @@ class MainHomeRoute extends _i5.PageRouteInfo<MainHomeRouteArgs> {
   MainHomeRoute({_i6.Key? key})
       : super(
           MainHomeRoute.name,
-          path: '/main-home-page',
+          path: '/',
           args: MainHomeRouteArgs(key: key),
         );
 

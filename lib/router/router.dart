@@ -8,16 +8,16 @@ import 'package:el_gato/ui/splash/splash_page.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashPage, initial: true),
+    AutoRoute(
+      page: SplashPage,
+    ),
     AutoRoute(
       page: LoginPage,
     ),
     AutoRoute(
       page: CreateAccountPage,
     ),
-    AutoRoute(
-      page: MainHomePage,
-    ),
+    AutoRoute(page: MainHomePage, initial: true),
   ],
 )
 class $AppRouter {}
