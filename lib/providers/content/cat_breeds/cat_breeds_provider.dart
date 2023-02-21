@@ -25,8 +25,11 @@ class CatBreedsProvider extends StateNotifier<ApiFetchState<List<CatBreed>>> {
   final CatBreedsRepository repository;
 
   /// This method fetches the breeds to the device
-  Future<void> fetchBreeds() async {
-    state = ApiFetchState.loading();
+  Future<void> fetchBreeds({bool refresh = false}) async {
+    if (refresh) {
+    } else {
+      state = ApiFetchState.loading();
+    }
     try {
       state = ApiFetchState.success(await repository.getBreeds());
     } on DioError catch (e) {
