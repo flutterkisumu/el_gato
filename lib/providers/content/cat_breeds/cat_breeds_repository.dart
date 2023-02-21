@@ -7,6 +7,6 @@ class CatBreedsRepository {
   Future<List<CatBreed>> getBreeds() async {
     final response =
         await ApiService<List<Map<String, dynamic>>>().getData('/breeds');
-    return response!.map((e) => CatBreed.fromJson(e)).toList();
+    return response!.map(CatBreed.fromJson).toList();
   }
 }
