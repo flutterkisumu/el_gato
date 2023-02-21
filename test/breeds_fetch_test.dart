@@ -13,15 +13,15 @@ void main() {
         // Override the behavior of repositoryProvider to return
         // FakeRepository instead of Repository.
         catBreedsRepositoryProvider.overrideWithValue(FakeCatBreedsRepository())
-        // We do not have to override `todoListProvider`, it will automatically
         // use the overridden repositoryProvider
       ],
     );
 
-    // The first read if the initial state
+    // The first read should be the loading state because the
+    // provider starts fetching onlaunch
     expect(
       container.read(catBreedsProvider),
-      ApiFetchState<List<CatBreed>>.initial(),
+      ApiFetchState<List<CatBreed>>.loading(),
     );
 
     /// Wait for the get request to finish
