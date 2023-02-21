@@ -4,6 +4,7 @@ import 'package:el_gato/style/app_colors.dart';
 import 'package:el_gato/ui/main_home/feed/breeds/breed_detail_dialog_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The breeds page to show all the breeds
@@ -76,9 +77,10 @@ class BreedTileWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      onTap: () {
+      onLongPress: () {
         /// Show the breed detail dialog
-        showCupertinoModalPopup(
+        HapticFeedback.lightImpact();
+        showCupertinoModalPopup<void>(
           context: context,
           builder: (_) {
             return Padding(
