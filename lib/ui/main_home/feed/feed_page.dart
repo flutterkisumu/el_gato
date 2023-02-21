@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class FeedPage extends ConsumerWidget {
   /// The constructor
   FeedPage({super.key});
+
+  /// The bucket to store the page states
   final PageStorageBucket bucket = PageStorageBucket();
 
   /// A list of all the children
@@ -25,11 +27,15 @@ class FeedPage extends ConsumerWidget {
   ];
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: const CupertinoNavigationBar(
-        middle: Text('Feed'),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(
+          'Feed',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        backgroundColor: CupertinoTheme.of(context).barBackgroundColor,
       ),
-      body: Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(

@@ -33,6 +33,7 @@ class _MyCatAppState extends ConsumerState<MyCatApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerDelegate: _appRouter.delegate(),
+      themeMode: ThemeMode.dark,
       title: 'El Gato',
       theme: ThemeData(
         textTheme: textTheme(),
