@@ -7,7 +7,7 @@ class ApiService<T> {
   static final dio = GetIt.I.get<Dio>();
 
   /// The base url for every API call
-  static String baseURL = 'https://9a7e-197-248-67-75.eu.ngrok.io';
+  static String baseURL = 'https://3063-197-248-67-75.eu.ngrok.io/api';
 
   /// This method will fetch the data from the api
   Future<T?> getData(String path) async {
