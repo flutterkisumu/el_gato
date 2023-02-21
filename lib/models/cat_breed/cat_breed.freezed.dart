@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cat_breed.dart';
 
@@ -21,7 +21,7 @@ CatBreed _$CatBreedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CatBreed {
   /// This is the id of the cat breed
-  @JsonKey(name: 'BreedID')
+  @JsonKey(name: 'Id')
   String get id => throw _privateConstructorUsedError;
 
   /// This is the name of the cat breed
@@ -48,7 +48,7 @@ abstract class $CatBreedCopyWith<$Res> {
       _$CatBreedCopyWithImpl<$Res, CatBreed>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'BreedID') String id,
+      {@JsonKey(name: 'Id') String id,
       @JsonKey(name: 'BreedName') String name,
       @JsonKey(name: 'BreedDescription') String description,
       @JsonKey(name: 'BreedImage') String? imageUrl});
@@ -101,7 +101,7 @@ abstract class _$$_CatBreedCopyWith<$Res> implements $CatBreedCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'BreedID') String id,
+      {@JsonKey(name: 'Id') String id,
       @JsonKey(name: 'BreedName') String name,
       @JsonKey(name: 'BreedDescription') String description,
       @JsonKey(name: 'BreedImage') String? imageUrl});
@@ -148,7 +148,7 @@ class __$$_CatBreedCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CatBreed implements _CatBreed {
   _$_CatBreed(
-      {@JsonKey(name: 'BreedID') required this.id,
+      {@JsonKey(name: 'Id') required this.id,
       @JsonKey(name: 'BreedName') required this.name,
       @JsonKey(name: 'BreedDescription') required this.description,
       @JsonKey(name: 'BreedImage') this.imageUrl});
@@ -158,7 +158,7 @@ class _$_CatBreed implements _CatBreed {
 
   /// This is the id of the cat breed
   @override
-  @JsonKey(name: 'BreedID')
+  @JsonKey(name: 'Id')
   final String id;
 
   /// This is the name of the cat breed
@@ -214,7 +214,7 @@ class _$_CatBreed implements _CatBreed {
 
 abstract class _CatBreed implements CatBreed {
   factory _CatBreed(
-      {@JsonKey(name: 'BreedID') required final String id,
+      {@JsonKey(name: 'Id') required final String id,
       @JsonKey(name: 'BreedName') required final String name,
       @JsonKey(name: 'BreedDescription') required final String description,
       @JsonKey(name: 'BreedImage') final String? imageUrl}) = _$_CatBreed;
@@ -224,7 +224,7 @@ abstract class _CatBreed implements CatBreed {
   @override
 
   /// This is the id of the cat breed
-  @JsonKey(name: 'BreedID')
+  @JsonKey(name: 'Id')
   String get id;
   @override
 

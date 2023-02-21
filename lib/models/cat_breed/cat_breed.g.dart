@@ -7,7 +7,7 @@ part of 'cat_breed.dart';
 // **************************************************************************
 
 _$_CatBreed _$$_CatBreedFromJson(Map<String, dynamic> json) => _$_CatBreed(
-      id: json['BreedID'] as String,
+      id: json['Id'] as String,
       name: json['BreedName'] as String,
       description: json['BreedDescription'] as String,
       imageUrl: json['BreedImage'] as String?,
@@ -15,7 +15,7 @@ _$_CatBreed _$$_CatBreedFromJson(Map<String, dynamic> json) => _$_CatBreed(
 
 Map<String, dynamic> _$$_CatBreedToJson(_$_CatBreed instance) =>
     <String, dynamic>{
-      'BreedID': instance.id,
+      'Id': instance.id,
       'BreedName': instance.name,
       'BreedDescription': instance.description,
       'BreedImage': instance.imageUrl,

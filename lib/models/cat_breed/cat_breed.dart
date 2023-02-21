@@ -11,7 +11,7 @@ class CatBreed with _$CatBreed {
   /// This is the cat breed factory
   factory CatBreed({
     /// This is the id of the cat breed
-    @JsonKey(name: 'BreedID') required String id,
+    @JsonKey(name: 'Id') required String id,
 
     /// This is the name of the cat breed
     @JsonKey(name: 'BreedName') required String name,
