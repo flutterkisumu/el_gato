@@ -31,8 +31,6 @@ class CatBreedsProvider extends StateNotifier<ApiFetchState<List<CatBreed>>> {
       state = ApiFetchState.success(await repository.getBreeds());
     } on DioError catch (e) {
       state = ApiFetchState.failed(e.toString());
-    } catch (e) {
-      state = ApiFetchState.failed(e.toString());
     }
   }
 }
