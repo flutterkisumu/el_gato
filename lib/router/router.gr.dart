@@ -48,9 +48,11 @@ class AppRouter extends _i5.RootStackRouter {
       );
     },
     MainHomeRoute.name: (routeData) {
+      final args = routeData.argsAs<MainHomeRouteArgs>(
+          orElse: () => const MainHomeRouteArgs());
       return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.MainHomePage(),
+        child: _i4.MainHomePage(key: args.key),
       );
     },
   };
@@ -138,12 +140,24 @@ class CreateAccountRouteArgs {
 
 /// generated route for
 /// [_i4.MainHomePage]
-class MainHomeRoute extends _i5.PageRouteInfo<void> {
-  const MainHomeRoute()
+class MainHomeRoute extends _i5.PageRouteInfo<MainHomeRouteArgs> {
+  MainHomeRoute({_i6.Key? key})
       : super(
           MainHomeRoute.name,
           path: '/main-home-page',
+          args: MainHomeRouteArgs(key: key),
         );
 
   static const String name = 'MainHomeRoute';
+}
+
+class MainHomeRouteArgs {
+  const MainHomeRouteArgs({this.key});
+
+  final _i6.Key? key;
+
+  @override
+  String toString() {
+    return 'MainHomeRouteArgs{key: $key}';
+  }
 }
