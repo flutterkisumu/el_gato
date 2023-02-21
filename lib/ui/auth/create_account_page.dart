@@ -99,7 +99,7 @@ class CreateAccountPage extends ConsumerWidget {
                       PrimaryButtonWidget(
                           label: 'Create Account',
                           onPressed: () {
-                            AutoRouter.of(context).push(const MainHomeRoute());
+                            AutoRouter.of(context).push(MainHomeRoute());
                           }),
                       const SizedBox(
                         height: 10,
