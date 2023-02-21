@@ -1,6 +1,7 @@
 import 'package:el_gato/models/cat_breed/cat_breed.dart';
 import 'package:el_gato/providers/content/cat_breeds/cat_breeds_provider.dart';
 import 'package:el_gato/style/app_colors.dart';
+import 'package:el_gato/ui/main_home/feed/breeds/breed_detail_dialog_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -75,7 +76,23 @@ class BreedTileWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        /// Show the breed detail dialog
+        showCupertinoModalPopup(
+          context: context,
+          builder: (_) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              child: CupertinoPopupSurface(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: BreedDetailDialogWidget(breed: breed),
+                ),
+              ),
+            );
+          },
+        );
+      },
       title: Text(breed.name),
       subtitle: Text(
         breed.description,
