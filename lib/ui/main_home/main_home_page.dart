@@ -1,29 +1,49 @@
+// ignore_for_file: use_colored_box
+
 import 'package:el_gato/providers/bottom_nav/bottom_nav_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'breeds_page.dart';
+
 /// This is the landing page
 class MainHomePage extends ConsumerWidget {
   /// The constructor
-  const MainHomePage({Key? key}) : super(key: key);
+  MainHomePage({Key? key}) : super(key: key);
+
+  /// The items
+  final items = [
+    BottomNavItem(icon: const Icon(CupertinoIcons.home), label: 'Home'),
+    BottomNavItem(
+      icon: const Icon(CupertinoIcons.list_bullet_below_rectangle),
+      label: 'Feed',
+    ),
+    BottomNavItem(icon: const Icon(CupertinoIcons.search), label: 'Search'),
+    BottomNavItem(
+      icon: const Icon(CupertinoIcons.settings),
+      label: 'Settings',
+    ),
+  ];
+
+  /// The pages
+  final pages = <Widget>[
+    Container(
+      color: Colors.red,
+    ),
+    BreedsPage(),
+    Container(
+      color: Colors.green,
+    ),
+    Container(
+      color: Colors.orange,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// The items
-    final items = [
-      BottomNavItem(icon: const Icon(CupertinoIcons.home), label: 'Home'),
-      BottomNavItem(
-        icon: const Icon(CupertinoIcons.list_bullet_below_rectangle),
-        label: 'Feed',
-      ),
-      BottomNavItem(icon: const Icon(CupertinoIcons.search), label: 'Search'),
-      BottomNavItem(
-        icon: const Icon(CupertinoIcons.settings),
-        label: 'Settings',
-      ),
-    ];
     return Scaffold(
+      body: pages[ref.watch(mainBottomNavProvider)],
       bottomNavigationBar: CupertinoTabBar(
         activeColor: Theme.of(context).colorScheme.secondary,
         currentIndex: ref.watch(mainBottomNavProvider),
