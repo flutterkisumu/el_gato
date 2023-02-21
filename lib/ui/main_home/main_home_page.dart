@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'breeds_page.dart';
+import 'feed/breeds/breeds_page.dart';
 
 /// This is the landing page
 class MainHomePage extends ConsumerWidget {
