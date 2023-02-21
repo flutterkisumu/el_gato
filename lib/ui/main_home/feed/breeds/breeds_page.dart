@@ -87,7 +87,7 @@ class BreedTileWidget extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               child: CupertinoPopupSurface(
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(16),
                   child: BreedDetailDialogWidget(breed: breed),
                 ),
               ),
@@ -95,7 +95,9 @@ class BreedTileWidget extends ConsumerWidget {
           },
         );
       },
-      title: Text(breed.name),
+      title: Text(
+        breed.name,
+      ),
       subtitle: Text(
         breed.description,
         maxLines: 3,

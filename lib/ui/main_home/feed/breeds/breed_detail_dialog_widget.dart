@@ -19,8 +19,12 @@ class BreedDetailDialogWidget extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(breed.name),
-          Text(breed.description),
+          Text(
+            breed.name,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          Text(breed.description,
+              style: Theme.of(context).textTheme.bodyMedium),
         ],
       ),
     );
