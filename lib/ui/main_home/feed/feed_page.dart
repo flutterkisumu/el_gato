@@ -9,8 +9,12 @@ class FeedPage extends ConsumerWidget {
   /// The constructor
   FeedPage({super.key});
   final PageStorageBucket bucket = PageStorageBucket();
+
+  /// A list of all the children
   final children = [
-    const BreedsPage(),
+    const BreedsPage(
+      key: PageStorageKey<String>('breedsPage'),
+    ),
     Container(
       color: Colors.red,
     ),
@@ -27,6 +31,9 @@ class FeedPage extends ConsumerWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const SizedBox(
+            height: 8,
+          ),
           CupertinoSegmentedControl<int>(
             children: const {
               0: Text('Breeds'),
@@ -35,7 +42,7 @@ class FeedPage extends ConsumerWidget {
             },
             groupValue: ref.watch(feedIndexProvider),
             onValueChanged: (val) {
-              ref.read(feedIndexProvider.notifier).changeValue(val);
+              ref.read(feedIndexProvider.notifier).value = val;
             },
           ),
           Expanded(
@@ -58,8 +65,9 @@ class FeedIndexNotifier extends StateNotifier<int> {
   /// The constructor
   FeedIndexNotifier() : super(0);
 
-  /// The state update method
-  void changeValue(int val) {
-    state = val;
-  }
+  /// The state getter
+  int get value => state;
+
+  /// The state setter
+  set value(int val) => state = val;
 }
