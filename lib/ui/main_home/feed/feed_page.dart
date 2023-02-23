@@ -27,15 +27,15 @@ class FeedPage extends ConsumerWidget {
   ];
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+    return Scaffold(
+      appBar: CupertinoNavigationBar(
         middle: Text(
           'Feed',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         backgroundColor: CupertinoTheme.of(context).barBackgroundColor,
       ),
-      child: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(
