@@ -1,5 +1,6 @@
 import 'package:el_gato/style/app_colors.dart';
 import 'package:el_gato/ui/main_home/feed/breeds/breeds_page.dart';
+import 'package:el_gato/ui/main_home/feed/images/images_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,8 +19,8 @@ class FeedPage extends ConsumerWidget {
     const BreedsPage(
       key: PageStorageKey<String>('breedsPage'),
     ),
-    Container(
-      color: Colors.red,
+    const ImagesPage(
+      key: PageStorageKey<String>('imagesPage'),
     ),
     Container(
       color: Colors.green,
