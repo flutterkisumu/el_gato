@@ -1,0 +1,4 @@
+class ApiFetchRepository<T> {
+ getData(){} 
+}
+
