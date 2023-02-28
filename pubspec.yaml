@@ -23,16 +23,19 @@ environment:
 dependencies:
   auto_route: ^5.0.2
   awesome_dio_interceptor: ^0.0.2+4
+  cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   flutter:
     sdk: flutter
   flutter_form_builder: ^7.7.0
   flutter_localization: null
+  flutter_masonry_view: ^0.0.2
   flutter_riverpod: ^2.1.1
   form_builder_validators: ^8.4.0
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
+  insta_image_viewer: ^1.0.2
   intl: ^0.17.0
   json_serializable: ^6.5.4
   lottie: ^2.0.0
