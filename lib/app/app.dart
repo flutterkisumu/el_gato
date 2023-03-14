@@ -36,6 +36,7 @@ class _MyCatAppState extends ConsumerState<MyCatApp> {
       title: 'El Gato',
       theme: ThemeData(
         textTheme: textTheme(),
+        useMaterial3: true,
         colorScheme: const ColorScheme.light(
           primary: AppColors.darkBlueColor,
           secondary: AppColors.darkCyanColor,
@@ -43,6 +44,7 @@ class _MyCatAppState extends ConsumerState<MyCatApp> {
       ),
       darkTheme: ThemeData(
         primaryColor: AppColors.darkCyanColor,
+        useMaterial3: true,
         textTheme: textTheme(darkTheme: true),
         brightness: Brightness.dark,
         colorScheme: const ColorScheme.dark(
