@@ -14,23 +14,21 @@ class BreedsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: ref.watch(catBreedsProvider).maybeWhen(
-            success: (breeds) => BreedsListWidget(breeds: breeds),
-            loading: () {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.cyanColor,
-                ),
-              );
-            },
-            orElse: () {
-              return const Center(
-                child: Text('Oh No!'),
-              );
-            },
-          ),
-    );
+    return ref.watch(catBreedsProvider).maybeWhen(
+          success: (breeds) => BreedsListWidget(breeds: breeds),
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.cyanColor,
+              ),
+            );
+          },
+          orElse: () {
+            return const Center(
+              child: Text('Oh No!'),
+            );
+          },
+        );
   }
 }
 
