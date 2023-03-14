@@ -13,27 +13,29 @@ class ImagesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: ref.watch(catImagesProvider).whenOrNull(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              success: (images) => MasonryView(
-                listOfItem: images.map((e) => e.url).toList(),
-                numberOfColumn: 2,
-                itemBuilder: (imageUrl) {
-                  return ImageWidget(
-                    catImage: images.firstWhere(
-                      (element) => element.url == imageUrl.toString(),
-                    ),
-                  );
-                },
-              ),
+    return ref.watch(catImagesProvider).maybeWhen(
+          orElse: () => const Center(
+            child: Text('No images found'),
+          ),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          success: (images) => SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: MasonryView(
+              listOfItem: images.map((e) => e.url).toList(),
+              numberOfColumn: MediaQuery.of(context).size.height ~/
+                  MediaQuery.of(context).size.width,
+              itemBuilder: (imageUrl) {
+                return ImageWidget(
+                  catImage: images.firstWhere(
+                    (element) => element.url == imageUrl.toString(),
+                  ),
+                );
+              },
             ),
-      ),
-    );
+          ),
+        );
   }
 }
 
