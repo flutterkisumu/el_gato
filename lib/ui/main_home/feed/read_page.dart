@@ -7,9 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The feed widget that acts as a base for all feed items
 
-class FeedPage extends ConsumerWidget {
+class ReadPage extends ConsumerWidget {
   /// The constructor
-  FeedPage({super.key});
+  ReadPage({super.key});
 
   /// The bucket to store the page states
   final PageStorageBucket bucket = PageStorageBucket();
@@ -28,39 +28,33 @@ class FeedPage extends ConsumerWidget {
   ];
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: CupertinoNavigationBar(
-        middle: Text(
-          'Feed',
-          style: Theme.of(context).textTheme.titleMedium,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(
+          height: 8,
         ),
-        backgroundColor: CupertinoTheme.of(context).barBackgroundColor,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(
-            height: 8,
+        CupertinoSegmentedControl<int>(
+          children: const {
+            0: Text('Breeds'),
+            1: Text('Pictures'),
+            2: Text('Favorites')
+          },
+          selectedColor: AppColors.darkCyanColor,
+          borderColor: AppColors.darkCyanColor,
+          groupValue: ref.watch(feedIndexProvider),
+          onValueChanged: (val) {
+            ref.read(feedIndexProvider.notifier).value = val;
+          },
+        ),
+        
+        Expanded(
+          child: PageStorage(
+            bucket: bucket,
+            child: children[ref.watch(feedIndexProvider)],
           ),
-          CupertinoSegmentedControl<int>(
-            children: const {
-              0: Text('Breeds'),
-              1: Text('Pictures'),
-              2: Text('Favorites')
-            },
-            selectedColor: AppColors.darkCyanColor,
-            borderColor: AppColors.darkCyanColor,
-            groupValue: ref.watch(feedIndexProvider),
-            onValueChanged: (val) {
-              ref.read(feedIndexProvider.notifier).value = val;
-            },
-          ),
-          Expanded(
-            child: PageStorage(
-                bucket: bucket, child: children[ref.watch(feedIndexProvider)]),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }
