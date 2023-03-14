@@ -17,3 +17,10 @@ This app will also demonstrate how an experienced flutter developer like myself 
 Check it out, you may learn a thing or two.
 
 ### About this application
+
+- This application is a simple app that displays a list of cats and their details. It also allows you to add a new cat to the list. The app is built using flutter and dart.  
+
+### The API Documentation
+- The API for this application was built using .NET Core 7.0.3 and targets .NET Standard 6.0
+- It is hosted on Azure. 
+- The API documentation can be found [here](https://elgatoapi.azurewebsites.net/swagger/index.html).
