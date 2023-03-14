@@ -17,8 +17,10 @@ class ImagesPage extends ConsumerWidget {
           orElse: () => const Center(
             child: Text('No images found'),
           ),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+          loading: () => Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ),
           ),
           success: (images) => SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
