@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class PrimaryButtonWidget extends StatelessWidget {
   /// The constructor
   const PrimaryButtonWidget({
-    Key? key,
+    super.key,
     required this.label,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   /// The button's label
   final String label;

@@ -6,8 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// This is the password toggle suffix widget
 class PasswordSuffixWidget extends ConsumerWidget {
   /// The constructor
-  const PasswordSuffixWidget({Key? key, required this.obscureProvider})
-      : super(key: key);
+  const PasswordSuffixWidget({super.key, required this.obscureProvider});
 
   /// The provider to hold the obscure password state
   final StateNotifierProvider<ObscurePasswordProvider, bool> obscureProvider;

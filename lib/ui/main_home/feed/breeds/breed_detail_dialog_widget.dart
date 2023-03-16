@@ -24,7 +24,7 @@ class BreedDetailDialogWidget extends ConsumerWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Text(breed.description,
-              style: Theme.of(context).textTheme.bodyMedium),
+              style: Theme.of(context).textTheme.bodyMedium,),
         ],
       ),
     );

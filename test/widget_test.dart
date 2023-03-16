@@ -12,6 +12,6 @@ void main() {
   testWidgets('App starts well with a splash screen',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyCatApp());
+    await tester.pumpWidget(const MyCatApp());
   });
 }

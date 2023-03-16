@@ -6,14 +6,14 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 class AppTextInput extends StatelessWidget {
   /// The constructor initiating all required and optional parameters
   const AppTextInput({
-    Key? key,
+    super.key,
     required this.name,
     this.label,
     this.hint,
     this.validators,
     this.suffix,
     this.obscureText = false,
-  }) : super(key: key);
+  });
 
   /// The key label
   final String name;

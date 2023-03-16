@@ -92,6 +92,7 @@ class MainHomePage extends ConsumerWidget {
                   tooltip: items[items.indexOf(e)].tooltip,
                   icon: items[items.indexOf(e)].icon,
                   selectedIcon: items[items.indexOf(e)].icon,
+                  
                   label: items[items.indexOf(e)].label,
                 ),
               )
@@ -107,7 +108,7 @@ class MainHomePage extends ConsumerWidget {
 class BottomNavItem {
   /// Constructor
   BottomNavItem(
-      {required this.icon, required this.label, required this.tooltip});
+      {required this.icon, required this.label, required this.tooltip,});
 
   /// The icon
   final Icon icon;

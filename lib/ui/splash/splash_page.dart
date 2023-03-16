@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 /// This page first appears on app launch
 class SplashPage extends StatefulWidget {
   /// The constructor
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
   @override
   State<SplashPage> createState() => _SplashPageState();
 }

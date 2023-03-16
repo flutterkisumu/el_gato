@@ -16,7 +16,7 @@ import 'package:lottie/lottie.dart';
 /// users will be able to log in
 class CreateAccountPage extends ConsumerWidget {
   /// The constructor
-  CreateAccountPage({Key? key}) : super(key: key);
+  CreateAccountPage({super.key});
 
   /// This holds the state for the login page password obscure state
   static StateNotifierProvider<ObscurePasswordProvider, bool>
