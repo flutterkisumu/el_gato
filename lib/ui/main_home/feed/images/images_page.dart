@@ -24,17 +24,20 @@ class ImagesPage extends ConsumerWidget {
           ),
           success: (images) => SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: MasonryView(
-              listOfItem: images.map((e) => e.url).toList(),
-              numberOfColumn: MediaQuery.of(context).size.height ~/
-                  MediaQuery.of(context).size.width,
-              itemBuilder: (imageUrl) {
-                return ImageWidget(
-                  catImage: images.firstWhere(
-                    (element) => element.url == imageUrl.toString(),
-                  ),
-                );
-              },
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: MasonryView(
+                listOfItem: images.map((e) => e.url).toList(),
+                numberOfColumn: MediaQuery.of(context).size.height ~/
+                    MediaQuery.of(context).size.width,
+                itemBuilder: (imageUrl) {
+                  return ImageWidget(
+                    catImage: images.firstWhere(
+                      (element) => element.url == imageUrl.toString(),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         );

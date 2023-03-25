@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:el_gato/providers/dio_provider/dio_provider.dart';
 import 'package:el_gato/router/router.gr.dart';
-import 'package:el_gato/style/app_colors.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -31,67 +31,31 @@ class _MyCatAppState extends ConsumerState<MyCatApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),
-      title: 'El Gato',
-      theme: ThemeData(
-        textTheme: textTheme(),
-        useMaterial3: true,
-        colorScheme: const ColorScheme.light(
-          primary: AppColors.darkBlueColor,
-          secondary: AppColors.darkCyanColor,
-        ),
-      ),
-      darkTheme: ThemeData(
-        primaryColor: AppColors.darkCyanColor,
-        useMaterial3: true,
-        textTheme: textTheme(darkTheme: true),
-        brightness: Brightness.dark,
-        colorScheme: const ColorScheme.dark(
-          primary: AppColors.blueColor,
-          secondary: AppColors.cyanColor,
-        ),
-      ),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      supportedLocales: const [
-        Locale('en'),
-      ],
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        FormBuilderLocalizations.delegate,
-      ],
+    return DynamicColorBuilder(
+      builder: (lightScheme, darkScheme) {
+        return MaterialApp.router(
+          routerDelegate: _appRouter.delegate(),
+          title: 'El Gato',
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: lightScheme,
+          ),
+          darkTheme: ThemeData(
+            useMaterial3: true,
+            brightness: Brightness.dark,
+            colorScheme: darkScheme,
+          ),
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          supportedLocales: const [
+            Locale('en'),
+          ],
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            FormBuilderLocalizations.delegate,
+          ],
+        );
+      },
     );
   }
 }
-
-/// The text theme for the app
-TextTheme textTheme({bool darkTheme = false}) => TextTheme(
-      titleLarge: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: darkTheme ? AppColors.cyanColor : AppColors.darkBlueColor,
-      ),
-      titleMedium: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: darkTheme ? AppColors.cyanColor : AppColors.darkBlueColor,
-      ),
-      titleSmall: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: darkTheme ? AppColors.cyanColor : AppColors.darkBlueColor,
-      ),
-      bodyLarge: const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-      ),
-      bodyMedium: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      bodySmall: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-      ),
-    );

@@ -40,14 +40,11 @@ class ReadPage extends ConsumerWidget {
             1: Text('Pictures'),
             2: Text('Favorites')
           },
-          selectedColor: AppColors.darkCyanColor,
-          borderColor: AppColors.darkCyanColor,
           groupValue: ref.watch(feedIndexProvider),
           onValueChanged: (val) {
             ref.read(feedIndexProvider.notifier).value = val;
           },
         ),
-        
         Expanded(
           child: PageStorage(
             bucket: bucket,

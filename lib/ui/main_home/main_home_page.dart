@@ -12,9 +12,6 @@ class MainHomePage extends ConsumerWidget {
   /// The constructor
   MainHomePage({super.key});
 
-  /// The bucket to store the page states
-  final PageStorageBucket bucket = PageStorageBucket();
-
   /// The items
   final items = [
     BottomNavItem(
@@ -33,73 +30,103 @@ class MainHomePage extends ConsumerWidget {
       label: 'Read',
       tooltip: 'Read more about cats',
     ),
-    // BottomNavItem(
-    //   icon: const Icon(
-    //     CupertinoIcons.search,
-    //     color: Colors.white,
-    //   ),
-
-    //   label: 'Search',
-    // ),
-    // BottomNavItem(
-    //   icon: const Icon(
-    //     CupertinoIcons.settings,
-    //     color: Colors.white,
-    //   ),
-    //   label: 'Settings',
-    // ),
-  ];
-
-  /// The pages
-  final pages = <Widget>[
-    const ImagesPage(
-      key: PageStorageKey<String>('imagesPage'),
-    ),
-    ReadPage(),
   ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PageStorage(
-      bucket: bucket,
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            const SliverAppBar(
-              pinned: true,
-              floating: true,
-              expandedHeight: 200,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text('El Gato'),
-              ),
-            ),
-            SliverFillRemaining(
-              child: PageStorage(
-                bucket: bucket,
-                child: pages[ref.watch(mainBottomNavProvider)],
-              ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: ref.watch(mainBottomNavProvider),
-          onDestinationSelected: (value) {
-            ref.read(mainBottomNavProvider.notifier).state = value;
-          },
-          destinations: items
-              .map(
-                (e) => NavigationDestination(
-                  tooltip: items[items.indexOf(e)].tooltip,
-                  icon: items[items.indexOf(e)].icon,
-                  selectedIcon: items[items.indexOf(e)].icon,
-                  
-                  label: items[items.indexOf(e)].label,
-                ),
-              )
-              .toList(),
-        ),
+    return Homewidget(items: items);
+  }
+}
+
+/// The responsive page
+class Homewidget extends ConsumerWidget {
+  /// Constructor
+  const Homewidget({super.key, required this.items});
+
+  /// Bottom nav items
+  final List<BottomNavItem> items;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    /// The bucket to store the page states
+    final bucket = PageStorageBucket();
+
+    /// The pages
+    final pages = <Widget>[
+      const ImagesPage(
+        key: PageStorageKey<String>('imagesPage'),
       ),
-    );
+      ReadPage(),
+    ];
+
+    final bool isLandscape = MediaQuery.of(context).size.width > 600;
+    return isLandscape
+        ? Scaffold(
+            body: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Row(
+                children: [
+                  NavigationRail(
+                    destinations: items
+                        .map(
+                          (e) => NavigationRailDestination(
+                            icon: items[items.indexOf(e)].icon,
+                            selectedIcon: items[items.indexOf(e)].icon,
+                            label: Text(items[items.indexOf(e)].label),
+                          ),
+                        )
+                        .toList(),
+                    selectedIndex: ref.watch(mainBottomNavProvider),
+                    onDestinationSelected: (value) {
+                      ref.read(mainBottomNavProvider.notifier).state = value;
+                    },
+                  ),
+                  Expanded(
+                    child: PageStorage(
+                      bucket: bucket,
+                      child: pages[ref.watch(mainBottomNavProvider)],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                const SliverAppBar(
+                  pinned: true,
+                  floating: true,
+                  expandedHeight: 200,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Text('El Gato'),
+                  ),
+                ),
+                SliverFillRemaining(
+                  child: PageStorage(
+                    bucket: bucket,
+                    child: pages[ref.watch(mainBottomNavProvider)],
+                  ),
+                ),
+              ],
+            ),
+            bottomNavigationBar: NavigationBar(
+              selectedIndex: ref.watch(mainBottomNavProvider),
+              onDestinationSelected: (value) {
+                ref.read(mainBottomNavProvider.notifier).state = value;
+              },
+              destinations: items
+                  .map(
+                    (e) => NavigationDestination(
+                      tooltip: items[items.indexOf(e)].tooltip,
+                      icon: items[items.indexOf(e)].icon,
+                      selectedIcon: items[items.indexOf(e)].icon,
+                      label: items[items.indexOf(e)].label,
+                    ),
+                  )
+                  .toList(),
+            ),
+          );
   }
 }
 
@@ -107,8 +134,11 @@ class MainHomePage extends ConsumerWidget {
 
 class BottomNavItem {
   /// Constructor
-  BottomNavItem(
-      {required this.icon, required this.label, required this.tooltip,});
+  BottomNavItem({
+    required this.icon,
+    required this.label,
+    required this.tooltip,
+  });
 
   /// The icon
   final Icon icon;

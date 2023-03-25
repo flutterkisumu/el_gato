@@ -18,9 +18,7 @@ class BreedsPage extends ConsumerWidget {
           success: (breeds) => BreedsListWidget(breeds: breeds),
           loading: () {
             return const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.cyanColor,
-              ),
+              child: CircularProgressIndicator(),
             );
           },
           orElse: () {
